@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "Automated Tests binaryfileinfo",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest binary-file-info",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    },
+    {
+      "name": "Automated Tests countfilelines",
+      "setup": "sudo -H pip3 install pytest",
+      "run": "pytest count-file-lines",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+}

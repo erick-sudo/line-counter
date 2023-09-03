@@ -75,3 +75,4 @@ Please enter a file name or path for line counting: README.md
 Optional: Please enter a value for lookup - Press [Enter] for no value: file
 Number of lines containing [file] is: 15
 ```
+

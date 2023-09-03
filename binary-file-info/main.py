@@ -22,7 +22,8 @@ def computeHighestPower(dividend, divisor, p=0):
         return computeHighestPower(dividend / divisor, divisor, p)
     else:
         return p
-    
+
+# Compute the lowest readable value and unit
 def computeUnit(units, dividend, divisor):
     highest_power = computeHighestPower(dividend, divisor)
     new_divisor = divisor**highest_power
@@ -38,6 +39,7 @@ def computeUnit(units, dividend, divisor):
     else:
         return f"{''.join(quotient)} {units[highest_power]}"
 
+# Compute file size
 def computeFileSize(units, filename):
     if os.path.isfile(filename):
         file_size = os.stat(filename).st_size
@@ -45,18 +47,24 @@ def computeFileSize(units, filename):
 
 def computeFileType(filename):
     if pdf == readFirstNBytesFromFile(filename, 4):
+        # Compared first 4 bytes of the file
         return "PDF"
     elif gif == readFirstNBytesFromFile(filename, 3):
+        # Compared first 3 bytes of the file
         return "GIF"
     elif png == readFirstNBytesFromFile(filename, 8):
+        # Compared first 8 bytes of the file
         return "PNG"
     elif jpeg_start == readFirstNBytesFromFile(filename, 2) and jpeg_end == readLastNBytesFromFile(filename, 2):
+        # Compared first 2 bytes of the file and last 2 bytes of the
         return "JPEG"
     elif utf8_bom == readFirstNBytesFromFile(filename, 3):
+        # Compared first 3 bytes of the file
         return "UTF-8 text with BOM"
     else:
         return "Unknown File Type"
 
+# Obtain first N bytes of a binary file
 def readFirstNBytesFromFile(filename, N=1024):
     if os.path.isfile(filename):
         with open(filename, 'rb') as file:
@@ -65,6 +73,7 @@ def readFirstNBytesFromFile(filename, N=1024):
             file.close()
             return data
 
+# Obtain last N bytes of a binary file
 def readLastNBytesFromFile(filename, N=1024):
     if os.path.isfile(filename):
         with open(filename, 'rb') as file:
